@@ -1,0 +1,664 @@
+.student-admin-page {
+  --student-ink: #e8eefb;
+  --student-muted: #94a3b8;
+  --student-line: rgba(255, 255, 255, 0.09);
+  --student-panel: #171d2d;
+  color: var(--student-ink);
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: clamp(1.1rem, 2.5vw, 2.25rem);
+  animation: student-page-enter 420ms ease-out both;
+}
+
+.student-admin-heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.6rem;
+}
+
+.student-admin-heading h1 {
+  color: #f8fafc;
+  font-size: clamp(1.65rem, 3vw, 2.2rem);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+  margin: 0.25rem 0 0.35rem;
+}
+
+.student-admin-heading p,
+.student-admin-panel-heading p {
+  color: var(--student-muted);
+  margin: 0;
+}
+
+.student-admin-eyebrow {
+  color: #fbbf24;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.student-admin-heading-icon {
+  align-items: center;
+  background: linear-gradient(145deg, rgba(245, 158, 11, 0.25), rgba(245, 158, 11, 0.06));
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: 18px;
+  color: #fbbf24;
+  display: flex;
+  font-size: 1.8rem;
+  height: 62px;
+  justify-content: center;
+  width: 62px;
+}
+
+.student-admin-panel,
+.branch-card {
+  background: linear-gradient(145deg, rgba(25, 32, 49, 0.98), rgba(20, 26, 41, 0.98));
+  border: 1px solid var(--student-line);
+  border-radius: 16px;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.13);
+}
+
+.student-admin-panel {
+  margin-bottom: 1.25rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.student-admin-panel-heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.student-admin-panel-heading h2 {
+  color: #f8fafc;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+}
+
+.student-admin-panel-heading p {
+  font-size: 0.82rem;
+}
+
+.student-admin-panel-icon,
+.program-count {
+  align-items: center;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.18);
+  border-radius: 12px;
+  color: #fbbf24;
+  display: inline-flex;
+  font-size: 1.1rem;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.program-count {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.program-create-form {
+  align-items: end;
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(130px, 0.55fr) auto;
+}
+
+.program-create-form label {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.program-create-form label span {
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.program-create-form input,
+.directory-search input {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9px;
+  color: #f8fafc;
+  min-height: 43px;
+  outline: none;
+  padding: 0.65rem 0.8rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+  width: 100%;
+}
+
+.program-create-form input:focus,
+.directory-search:focus-within {
+  border-color: rgba(251, 191, 36, 0.7);
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+}
+
+.program-create-form button {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border: 0;
+  border-radius: 9px;
+  color: #1c1917;
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 750;
+  min-height: 43px;
+  padding: 0 1.1rem;
+  transition: filter 150ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+
+.program-create-form button:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.program-create-form button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.program-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.program-row {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--student-line);
+  border-radius: 12px;
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.75rem;
+}
+
+.program-row-mark {
+  align-items: center;
+  background: rgba(59, 130, 246, 0.12);
+  border-radius: 10px;
+  color: #93c5fd;
+  display: flex;
+  flex: 0 0 38px;
+  height: 38px;
+  justify-content: center;
+}
+
+.program-row-copy {
+  display: grid;
+  flex: 1;
+  gap: 0.2rem;
+}
+
+.program-row-copy strong {
+  color: #f1f5f9;
+  font-size: 0.9rem;
+}
+
+.program-row-copy span {
+  color: var(--student-muted);
+  font-size: 0.8rem;
+}
+
+.program-prefix {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 7px;
+  color: #93c5fd;
+  font: 700 0.72rem ui-monospace, SFMono-Regular, Consolas, monospace;
+  padding: 0.35rem 0.5rem;
+}
+
+.program-delete-button {
+  background: transparent;
+  border: 1px solid rgba(248, 113, 113, 0.28);
+  border-radius: 8px;
+  color: #fca5a5;
+  cursor: pointer;
+  font-size: 0.76rem;
+  padding: 0.45rem 0.7rem;
+}
+
+.program-delete-button:hover {
+  background: rgba(248, 113, 113, 0.1);
+}
+
+.student-admin-alert {
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
+}
+
+.student-admin-alert-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  color: #fca5a5;
+}
+
+.student-admin-alert-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  color: #6ee7b7;
+}
+
+.student-admin-empty {
+  color: var(--student-muted);
+  font-size: 0.9rem;
+  padding: 1.4rem;
+  text-align: center;
+}
+
+.directory-toolbar {
+  align-items: center;
+  background: rgba(23, 29, 45, 0.9);
+  border: 1px solid var(--student-line);
+  border-radius: 14px;
+  color: var(--student-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  padding: 0.8rem 1rem;
+}
+
+.directory-toolbar strong {
+  color: #f8fafc;
+  font-size: 1.25rem;
+  margin-right: 0.25rem;
+}
+
+.directory-search {
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+  color: #94a3b8;
+  display: flex;
+  gap: 0.55rem;
+  max-width: 390px;
+  padding-left: 0.75rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+  width: 50%;
+}
+
+.directory-search input {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  min-width: 0;
+}
+
+.branch-directory {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.branch-card {
+  overflow: hidden;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.branch-card:hover {
+  border-color: rgba(245, 158, 11, 0.24);
+  transform: translateY(-2px);
+}
+
+.branch-card-expanded {
+  border-color: rgba(245, 158, 11, 0.28);
+  grid-column: 1 / -1;
+}
+
+.branch-card-header {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  gap: 0.85rem;
+  padding: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.branch-card-symbol {
+  align-items: center;
+  background: rgba(245, 158, 11, 0.12);
+  border-radius: 12px;
+  color: #fbbf24;
+  display: flex;
+  flex: 0 0 42px;
+  height: 42px;
+  justify-content: center;
+}
+
+.branch-card-title {
+  display: grid;
+  flex: 1;
+  gap: 0.2rem;
+}
+
+.branch-card-title strong {
+  color: #f1f5f9;
+  font-size: 0.93rem;
+}
+
+.branch-card-title small,
+.branch-student-copy small {
+  color: var(--student-muted);
+  font-size: 0.77rem;
+}
+
+.branch-card-chevron {
+  color: #fbbf24;
+  font-size: 1.3rem;
+}
+
+.branch-student-list {
+  border-top: 1px solid var(--student-line);
+  padding: 0.35rem 0.75rem 0.75rem;
+}
+
+.branch-student-row {
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  color: inherit;
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.7rem 0.3rem;
+  text-decoration: none;
+}
+
+.branch-student-row:last-child {
+  border-bottom: 0;
+}
+
+.branch-student-row:hover .branch-student-copy strong,
+.branch-student-row:hover .branch-student-open {
+  color: #fbbf24;
+}
+
+.branch-student-row img {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  height: 42px;
+  object-fit: cover;
+  width: 42px;
+}
+
+.branch-student-copy {
+  display: grid;
+  flex: 1;
+  gap: 0.22rem;
+  min-width: 0;
+}
+
+.branch-student-copy strong {
+  color: #e2e8f0;
+  font-size: 0.85rem;
+}
+
+.branch-student-open {
+  color: #94a3b8;
+  font-size: 0.76rem;
+  white-space: nowrap;
+}
+
+.student-profile-back {
+  color: #fbbf24;
+  display: inline-block;
+  font-size: 0.83rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+}
+
+.student-profile-back:hover {
+  color: #fde68a;
+}
+
+.student-profile-hero {
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 85% 0%, rgba(245, 158, 11, 0.16), transparent 38%),
+    linear-gradient(145deg, #1b2438, #151b2b);
+  border: 1px solid var(--student-line);
+  border-radius: 18px;
+  display: flex;
+  gap: 1.3rem;
+  margin-bottom: 1rem;
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 1.8rem);
+}
+
+.student-profile-avatar-wrap {
+  background: linear-gradient(135deg, #fbbf24, #d97706);
+  border-radius: 50%;
+  flex: 0 0 94px;
+  height: 94px;
+  padding: 3px;
+}
+
+.student-profile-avatar-wrap img {
+  border: 3px solid #1b2438;
+  border-radius: 50%;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.student-profile-identity {
+  flex: 1;
+  min-width: 0;
+}
+
+.student-profile-identity h1 {
+  color: #f8fafc;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  margin: 0.25rem 0;
+}
+
+.student-profile-identity p {
+  color: #aab7cb;
+  font-size: 0.88rem;
+  margin: 0 0 0.65rem;
+}
+
+.student-profile-status {
+  align-items: center;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 99px;
+  color: #fca5a5;
+  display: inline-flex;
+  font-size: 0.72rem;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.student-profile-status i {
+  background: #f87171;
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+}
+
+.student-profile-status.is-active {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(52, 211, 153, 0.22);
+  color: #6ee7b7;
+}
+
+.student-profile-status.is-active i {
+  background: #34d399;
+  box-shadow: 0 0 9px rgba(52, 211, 153, 0.55);
+}
+
+.student-profile-erp {
+  border-left: 1px solid var(--student-line);
+  display: grid;
+  gap: 0.35rem;
+  padding-left: 1.25rem;
+}
+
+.student-profile-erp span,
+.student-profile-summary article span,
+.student-profile-fields div span {
+  color: var(--student-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.student-profile-erp strong {
+  color: #fbbf24;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 1.05rem;
+}
+
+.student-profile-summary {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.student-profile-summary article {
+  background: rgba(23, 29, 45, 0.9);
+  border: 1px solid var(--student-line);
+  border-radius: 13px;
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+  padding: 1rem;
+}
+
+.student-profile-summary article strong {
+  color: #e8eefb;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.student-profile-fields {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.student-profile-fields div {
+  border-bottom: 1px solid var(--student-line);
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+  padding: 0.9rem 0.8rem;
+}
+
+.student-profile-fields div:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+
+.student-profile-fields div strong {
+  color: #e2e8f0;
+  font-size: 0.88rem;
+  font-weight: 550;
+  overflow-wrap: anywhere;
+}
+
+.student-profile-fields .student-profile-address {
+  grid-column: 1 / -1;
+}
+
+.student-profile-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.student-profile-actions a {
+  color: #fbbf24;
+  font-size: 0.82rem;
+  text-decoration: none;
+}
+
+.student-profile-actions a:hover {
+  color: #fde68a;
+}
+
+@keyframes student-page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 760px) {
+  .program-create-form {
+    grid-template-columns: 1fr;
+  }
+
+  .program-create-form button {
+    width: 100%;
+  }
+
+  .branch-directory {
+    grid-template-columns: 1fr;
+  }
+
+  .directory-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .directory-search {
+    max-width: none;
+    width: 100%;
+  }
+
+  .student-profile-hero {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .student-profile-erp {
+    border-left: 0;
+    border-top: 1px solid var(--student-line);
+    flex-basis: 100%;
+    padding: 0.75rem 0 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .student-profile-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .student-profile-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .student-profile-fields div:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--student-line);
+  }
+
+  .student-profile-fields div:last-child {
+    border-bottom: 0;
+  }
+
+  .branch-student-open {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .student-admin-page {
+    animation: none;
+  }
+
+  .branch-card,
+  .program-create-form button {
+    transition: none;
+  }
+}
