@@ -48,12 +48,12 @@ const start = async () => {
 };
 
 start().catch(async error => {
-  console.error('Server startup failed:', error);
-
-  await mongoose.disconnect().catch(disconnectError => {
-    console.error('Database cleanup failed:', disconnectError);
+  console.error('Server startup failed.', {
+    name: error.name || 'Error',
+    code: error.code || undefined,
   });
-
+  await mongoose.disconnect().catch(disconnectError => {
+    console.error(`Database cleanup failed (${disconnectError.name || 'Error'}).`);
+  });
   process.exitCode = 1;
 });
-
