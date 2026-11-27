@@ -46,12 +46,25 @@ const start = async () => {
     process.once(signal, () => shutdown(server, signal));
   }
 };
+<<<<<<< HEAD
 
 start().catch(async error => {
   console.error('Server startup failed.', {
     name: error.name || 'Error',
     code: error.code || undefined,
   });
+=======
+start().catch(async error => {
+  console.error('Server startup failed:', {
+    name: error.name || 'Error',
+    code: error.code || undefined,
+    message: error.message,
+    reason: error.reason?.message, // Mongo server-selection errors put details here
+  });
+  if (process.env.NODE_ENV !== 'production') {
+    console.error(error.stack);
+  }
+>>>>>>> 54d7b082e9a3cacef57fe3a7b8e98bf753729cea
   await mongoose.disconnect().catch(disconnectError => {
     console.error(`Database cleanup failed (${disconnectError.name || 'Error'}).`);
   });
